@@ -1,0 +1,102 @@
+version: "3.8"
+services:
+  database:
+    container_name: database
+    image: vmangos_database:latest
+    build:
+      context: database
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: wxB4ppfuLgZ5YCwdo79
+    env_file:
+      - ./config.env
+    ports:
+      - 3306:3306
+    volumes:
+      - ./database/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
+      - ./database/datadir:/var/lib/mysql
+      - ./database/database:/opt/database
+      - ./builder/opt/core/sql:/opt/sql
+    restart: unless-stopped
+
+  # realmd:
+  #   container_name: realmd
+  #   build:
+  #     context: realmd
+  #     dockerfile: Dockerfile
+  #   image: vmangos_realmd:latest
+  #   ports:
+  #     - 3724:3724
+  #   volumes:
+  #     - ./realmd/opt/vmangos/bin/realmd:/opt/vmangos/bin/realmd
+  #     - ./realmd/opt/vmangos/etc/realmd.conf:/opt/vmangos/etc/realmd.conf:ro
+  #     - ./realmd/opt/vmangos/logs:/opt/vmangos/logs
+  #   depends_on:
+  #     - database
+  #   restart: unless-stopped
+
+  # mangosd:
+  #   container_name: mangosd
+  #   tty: true
+  #   stdin_open: true
+  #   ports:
+  #     - 8085:8085
+  #     - 7878:7878
+  #   build:
+  #     context: mangosd
+  #     dockerfile: Dockerfile
+  #   image: vmangos_mangosd:latest
+  #   volumes:
+  #     - ./mangosd/opt/vmangos/bin/mangosd:/opt/vmangos/bin/mangosd
+  #     - ./mangosd/opt/vmangos/etc/mangosd.conf:/opt/vmangos/etc/mangosd.conf:ro
+  #     - ./mangosd/opt/vmangos/logs:/opt/vmangos/logs
+  #     - ./mangosd/opt/vmangos/honor:/opt/vmangos/honor
+  #     - ./mangosd/opt/vmangos/warden_modules:/opt/vmangos/warden_modules:ro
+  #     - ./data:/opt/vmangos/data:ro
+  #   depends_on:
+  #     - database
+  #   restart: unless-stopped
+
+  # nginx:
+  #   container_name: nginx
+  #   image: nginx:latest
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   volumes:
+  #     - ./run/wowsimpleregistration/wowsimpleregistration.conf:/etc/nginx/conf.d/wowsimpleregistration.conf:ro
+  #     - ./run/wowsimpleregistration/config.php:/var/www/wowsimpleregistration/application/config/config.php:ro
+  #     - ./run/wowsimpleregistration/homebrew:/var/www/wowsimpleregistration/template/homebrew
+  #     - ./src/WoWSimpleRegistration:/var/www/wowsimpleregistration
+  #     - ./run/playermap/playermap.conf:/etc/nginx/conf.d/playermap.conf:ro
+  #     - ./run/playermap/playermap_config.php:/var/www/playermap/config/playermap_config.php:ro
+  #     - ./run/playermap/pomm_conf.php:/var/www/playermap/pomm_conf.php:ro
+  #     - ./src/playermap:/var/www/playermap:ro
+  #   depends_on:
+  #     - php
+  #     - database
+  #   restart: unless-stopped
+
+  # php:
+  #   container_name: php
+  #   image: vmangos_php:latest
+  #   build:
+  #     context: docker/php
+  #     dockerfile: Dockerfile
+  #   user: 1000:1000
+  #   volumes:
+  #     - ./run/php/php.ini:/usr/local/etc/php/php.ini:ro
+  #     - ./src/WoWSimpleRegistration:/var/www/wowsimpleregistration
+  #     - ./run/wowsimpleregistration/config.php:/var/www/wowsimpleregistration/application/config/config.php:ro
+  #     - ./run/wowsimpleregistration/homebrew:/var/www/wowsimpleregistration/template/homebrew
+  #     - ./run/playermap/playermap_config.php:/var/www/playermap/config/playermap_config.php:ro
+  #     - ./run/playermap/pomm_conf.php:/var/www/playermap/pomm_conf.php:ro
+  #     - ./src/playermap:/var/www/playermap
+  #   depends_on:
+  #     - database
+  #   restart: unless-stopped
+
+volumes:
+  database:
+
+
