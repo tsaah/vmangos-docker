@@ -1,0 +1,10 @@
+[submodule "database/database"]
+	path = database/database
+	url = git@github.com:brotalnia/database.git
+[submodule "builder/opt/core"]
+	path = builder/opt/core
+	url = git@github.com:vmangos/core.git
+	branch = development
+[submodule "mangosd/opt/vmangos/warden_modules"]
+	path = mangosd/opt/vmangos/warden_modules
+	url = git@github.com:CW60/warden_modules.git
