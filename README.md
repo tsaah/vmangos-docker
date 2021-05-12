@@ -1,11 +1,11 @@
 # vmangos-docker
 docker for vmangos
 
-it uses vmangos core from https://github.com/vmangos/core
-it uses vanilla database from https://github.com/brotalnia/database forked from LightsHope
-it uses warden modules from https://github.com/CW60/warden_modules
-it will use in the future playermap from https://github.com/azerothcore/playermap
-it will use in thr future WoWSimpleRegistration from https://github.com/masterking32/WoWSimpleRegistration
+* it uses vmangos core from https://github.com/vmangos/core
+* it uses vanilla database from https://github.com/brotalnia/database forked from LightsHope
+* it uses warden modules from https://github.com/CW60/warden_modules
+* it will use in the future playermap from https://github.com/azerothcore/playermap
+* it will use in thr future WoWSimpleRegistration from https://github.com/masterking32/WoWSimpleRegistration
 
 # how to
 1. clone it somewhere
@@ -20,10 +20,10 @@ it will use in thr future WoWSimpleRegistration from https://github.com/masterki
 if you want to start from scratch with your realm/characters you can 'reset' database by calling ```database\remove-database-data.bat```
 
 caviats:
-	- no autosave scripts yet
-	- no automated db dumps yet
-	- no linux update script yet
-	- no playermap yet
-	- no wowsimleregistration yet
+	* no autosave scripts yet
+	* no automated db dumps yet
+	* no linux update script yet
+	* no playermap yet
+	* no wowsimleregistration yet
 
 if you don't like mine you can check out different docker by tonymmm1 here https://github.com/tonymmm1/vmangos-docker 
