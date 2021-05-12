@@ -20,10 +20,10 @@ docker for vmangos
 if you want to start from scratch with your realm/characters you can 'reset' database by calling ```database\remove-database-data.bat```
 
 caviats:
-	* no autosave scripts yet
-	* no automated db dumps yet
-	* no linux update script yet
-	* no playermap yet
-	* no wowsimleregistration yet
+* no autosave scripts yet
+* no automated db dumps yet
+* no linux update script yet
+* no playermap yet
+* no wowsimleregistration yet
 
 if you don't like mine you can check out different docker by tonymmm1 here https://github.com/tonymmm1/vmangos-docker 
