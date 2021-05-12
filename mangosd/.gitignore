@@ -1,1 +1,4 @@
-opt/vmangos
+opt/vmangos/bin
+opt/vmangos/etc
+opt/vmangos/logs
+opt/vmangos/honor

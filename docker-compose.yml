@@ -19,43 +19,43 @@ services:
       - ./builder/opt/core/sql:/opt/sql
     restart: unless-stopped
 
-  # realmd:
-  #   container_name: realmd
-  #   build:
-  #     context: realmd
-  #     dockerfile: Dockerfile
-  #   image: vmangos_realmd:latest
-  #   ports:
-  #     - 3724:3724
-  #   volumes:
-  #     - ./realmd/opt/vmangos/bin/realmd:/opt/vmangos/bin/realmd
-  #     - ./realmd/opt/vmangos/etc/realmd.conf:/opt/vmangos/etc/realmd.conf:ro
-  #     - ./realmd/opt/vmangos/logs:/opt/vmangos/logs
-  #   depends_on:
-  #     - database
-  #   restart: unless-stopped
+  realmd:
+    container_name: realmd
+    build:
+      context: realmd
+      dockerfile: Dockerfile
+    image: vmangos_realmd:latest
+    ports:
+      - 3724:3724
+    volumes:
+      - ./realmd/opt/vmangos/bin/realmd:/opt/vmangos/bin/realmd
+      - ./realmd/opt/vmangos/etc/realmd.conf:/opt/vmangos/etc/realmd.conf:ro
+      - ./realmd/opt/vmangos/logs:/opt/vmangos/logs
+    depends_on:
+      - database
+    restart: unless-stopped
 
-  # mangosd:
-  #   container_name: mangosd
-  #   tty: true
-  #   stdin_open: true
-  #   ports:
-  #     - 8085:8085
-  #     - 7878:7878
-  #   build:
-  #     context: mangosd
-  #     dockerfile: Dockerfile
-  #   image: vmangos_mangosd:latest
-  #   volumes:
-  #     - ./mangosd/opt/vmangos/bin/mangosd:/opt/vmangos/bin/mangosd
-  #     - ./mangosd/opt/vmangos/etc/mangosd.conf:/opt/vmangos/etc/mangosd.conf:ro
-  #     - ./mangosd/opt/vmangos/logs:/opt/vmangos/logs
-  #     - ./mangosd/opt/vmangos/honor:/opt/vmangos/honor
-  #     - ./mangosd/opt/vmangos/warden_modules:/opt/vmangos/warden_modules:ro
-  #     - ./data:/opt/vmangos/data:ro
-  #   depends_on:
-  #     - database
-  #   restart: unless-stopped
+  mangosd:
+    container_name: mangosd
+    tty: true
+    stdin_open: true
+    ports:
+      - 8085:8085
+      - 7878:7878
+    build:
+      context: mangosd
+      dockerfile: Dockerfile
+    image: vmangos_mangosd:latest
+    volumes:
+      - ./mangosd/opt/vmangos/bin/mangosd:/opt/vmangos/bin/mangosd
+      - ./mangosd/opt/vmangos/etc/mangosd.conf:/opt/vmangos/etc/mangosd.conf:ro
+      - ./mangosd/opt/vmangos/logs:/opt/vmangos/logs
+      - ./mangosd/opt/vmangos/honor:/opt/vmangos/honor
+      - ./mangosd/opt/vmangos/warden_modules:/opt/vmangos/warden_modules:ro
+      - ./data:/opt/vmangos/data:ro
+    depends_on:
+      - database
+    restart: unless-stopped
 
   # nginx:
   #   container_name: nginx
