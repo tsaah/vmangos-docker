@@ -10,3 +10,7 @@
 	path = mangosd/opt/vmangos/warden_modules
 	url = git@github.com:CW60/warden_modules.git
 	branch = master
+[submodule "wowsimpleregistration/wowsimpleregistration"]
+	path = wowsimpleregistration/wowsimpleregistration
+	url = git@github.com:masterking32/WoWSimpleRegistration.git
+	branch = master
