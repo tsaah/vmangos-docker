@@ -1,7 +1,7 @@
 @echo off
 
-git pull --stat --summary --progress --jobs=8
-git submodule update --init --remote --recursive --jobs=8
+git pull --stat --summary --progress
+git submodule update --init --remote --recursive
 git submodule status
 
 docker compose up -d
@@ -11,6 +11,12 @@ pushd builder
 call build.bat
 
 call install.bat
+
+popd
+
+pushd database
+
+call update-migrations.bat
 
 popd
 
